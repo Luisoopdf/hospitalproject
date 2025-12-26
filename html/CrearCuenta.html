@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <!-- Configuración básica de la página -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Icono del sitio -->
+    <link rel="icon" type="image/png" href="./img/logo.ico">
+
+    <!-- Hojas de estilo -->
+    <link rel="stylesheet" href="./css/template.css">
+    <link rel="stylesheet" href="./css/CrearCuenta.css">
+
+    <title>Crear Cuenta</title>
+</head>
+
+<body>
+    <!-- Logo fijo en la esquina superior izquierda -->
+    <div class="site-logo" aria-hidden="true">
+        <img src="./img/logo.png" alt="logo">
+    </div>
+
+    <!-- Contenedor principal del formulario -->
+    <main class="register">
+        <form>
+            <fieldset>
+                <!-- Título principal del formulario (solo se ve en el paso 1) -->
+                <legend>Datos Personales</legend>
+
+                <!-- PASO 1: Datos personales del usuario -->
+                <div id="step1">
+                    <!-- Campo CURP con enlace de ayuda -->
+                    <div class="field">
+                        <label class="subtitle" for="curp">CURP</label>
+                        <input id="curp" type="text" required placeholder="Tu CURP">
+
+                        <div class="curp-help">
+                            <a href="https://www.gob.mx/curp"
+                               target="_blank"
+                               rel="noopener noreferrer">
+                                Consulta aquí tu CURP
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Nombre y apellidos -->
+                    <div class="row">
+                        <div class="field">
+                            <label class="subtitle" for="nombres">Nombre(s)</label>
+                            <input id="nombres" type="text" required placeholder="Tu Nombre">
+                        </div>
+
+                        <div class="field">
+                            <label class="subtitle" for="apPaterno">Apellido Paterno</label>
+                            <input id="apPaterno" type="text" required placeholder="Tu Apellido Paterno">
+                        </div>
+
+                        <div class="field">
+                            <label class="subtitle" for="apMaterno">Apellido Materno</label>
+                            <input id="apMaterno" type="text" placeholder="Tu Apellido Materno">
+                        </div>
+                    </div>
+
+                    <!-- Fecha de nacimiento y género -->
+                    <div class="row">
+                        <div class="field">
+                            <label class="subtitle" for="fechaNac">Fecha de Nacimiento</label>
+                            <input id="fechaNac" type="date" required>
+                        </div>
+
+                        <div class="field">
+                            <label class="subtitle" for="genero">Género</label>
+                            <select id="genero" required>
+                                <option value="" disabled selected>Seleciona una opción</option>
+                                <option value="Masculino">Masculino</option>
+                                <option value="Femenino">Femenino</option>
+                                <option value="Otro">Otro</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Teléfonos de contacto con lista dinámica -->
+                    <div class="field">
+                        <label class="subtitle">Télefonos de Contacto</label>
+
+                        <div class="phone-wrap">
+                            <!-- Lista de teléfonos -->
+                            <div id="telefonos" class="phone-list">
+                                <div class="telefono-input">
+                                    <input type="text" name="telefono[]" placeholder="Número de teléfono" required>
+                                    <button
+                                        type="button"
+                                        class="btn-icon"
+                                        onclick="eliminar(this)"
+                                        aria-label="Eliminar teléfono">
+                                        ×
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Botón para agregar un nuevo teléfono -->
+                            <button
+                                type="button"
+                                id="agregarTelefonoBtn"
+                                class="btn secondary small"
+                                onclick="agregar()"
+                                aria-label="Agregar teléfono">
+                                +
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Selección de rol: Paciente o Recepcionista -->
+                    <div class="rol">
+                        <h2>Tú eres...</h2>
+
+                        <label>
+                            <input type="radio" name="rol" value="Paciente" required>
+                            Paciente
+                        </label>
+
+                        <label>
+                            <input type="radio" name="rol" value="Recepcion">
+                            Recepcionista
+                        </label>
+                    </div>
+
+                    <!-- Botón para pasar al siguiente paso (flujo controlado por JS) -->
+                    <div class="actions">
+                        <button type="button" id="siguienteBtn" class="btn primary">
+                            Siguiente
+                        </button>
+                    </div>
+                </div>
+
+                <!-- PASO 2 (Paciente): Información médica básica -->
+                <div id="medInfo" class="hidden">
+                    <h2>Información Médica</h2>
+
+                    <label for="peso">Peso</label>
+                    <input
+                        id="peso"
+                        name="peso"
+                        type="text"
+                        placeholder="Ingresa tu peso"
+                        required>
+
+                    <label for="estatura">Estatura</label>
+                    <input
+                        id="estatura"
+                        name="estatura"
+                        type="text"
+                        placeholder="Ingresa tu estatura"
+                        required>
+
+                    <label for="tipoSangre">Tipo de Sangre</label>
+                    <select id="tipoSangre" name="tipoSangre" required>
+                        <option value="" disabled selected>Seleciona una opción</option>
+                        <option value="A+">A+</option>
+                        <option value="A-">A-</option>
+                        <option value="B+">B+</option>
+                        <option value="B-">B-</option>
+                        <option value="AB+">AB+</option>
+                        <option value="AB-">AB-</option>
+                        <option value="O+">O+</option>
+                        <option value="O-">O-</option>
+                    </select>
+
+                    <!-- Botones de navegación del paso 2 (Paciente) -->
+                    <div class="actions" style="margin-top: 12px;">
+                        <button
+                            type="button"
+                            id="btnRegresar"
+                            class="btn primary hidden">
+                            Regresar
+                        </button>
+
+                        <button
+                            type="button"
+                            id="medNextBtn"
+                            class="btn primary">
+                            Siguiente
+                        </button>
+                    </div>
+                </div>
+
+                <!-- PASO 2 (Recepcionista): solo clave de autorización -->
+                <div id="recepInfo" class="hidden">
+                    <h2>Acceso para Recepcionista</h2>
+
+                    <label for="claveRegistro">
+                        Ingresa clave de autorización dada por la institución
+                    </label>
+                    <input
+                        id="claveRegistro"
+                        type="password"
+                        placeholder="Clave de autorización dada por la institución">
+
+                    <!-- Botón para enviar el formulario como recepcionista -->
+                    <div class="actions" style="margin-top: 12px;">
+                        <button type="submit" class="btn primary">
+                            Enviar
+                        </button>
+                    </div>
+                </div>
+
+                <!-- PASO 3 (Paciente): detalles médicos adicionales -->
+                <div id="extraInfo" class="hidden">
+                    <h2>Detalles Médicos Adicionales</h2>
+
+                    <!-- Lista dinámica de alergias -->
+                    <div id="alergias" class="list-block">
+                        <label>Alergias</label>
+
+                        <div id="alergias-list">
+                            <div class="list-input">
+                                <input type="text" name="alergias[]" placeholder="Alergia">
+
+                                <button
+                                    type="button"
+                                    class="btn-icon"
+                                    onclick="eliminarAlergia(this)">
+                                    ×
+                                </button>
+
+                                <button
+                                    type="button"
+                                    class="btn secondary small"
+                                    onclick="agregarAlergia()">
+                                    +
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Lista dinámica de antecedentes médicos -->
+                    <div id="antecedentes" class="list-block">
+                        <label>Antecedentes Médicos</label>
+
+                        <div id="antecedentes-list">
+                            <div class="list-input">
+                                <input
+                                    type="text"
+                                    name="antecedentes[]"
+                                    placeholder="Antecedente médico">
+
+                                <button
+                                    type="button"
+                                    class="btn-icon"
+                                    onclick="eliminarAntecedente(this)"
+                                    aria-label="Eliminar antecedente">
+                                    ×
+                                </button>
+
+                                <button
+                                    type="button"
+                                    class="btn secondary small"
+                                    onclick="agregarAntecedente()">
+                                    +
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Lista dinámica de enfermedades -->
+                    <div id="enfermedades" class="list-block">
+                        <label>Enfermedades</label>
+
+                        <div id="enfermedades-list">
+                            <div class="list-input">
+                                <input
+                                    type="text"
+                                    name="enfermedades[]"
+                                    placeholder="Enfermedad">
+
+                                <button
+                                    type="button"
+                                    class="btn-icon"
+                                    onclick="eliminarEnfermedad(this)"
+                                    aria-label="Eliminar enfermedad">
+                                    ×
+                                </button>
+
+                                <button
+                                    type="button"
+                                    class="btn secondary small"
+                                    onclick="agregarEnfermedad()">
+                                    +
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Botones finales del paso 3 (Paciente) -->
+                    <div class="actions" style="margin-top: 12px;">
+                        <button
+                            type="button"
+                            id="btnRegresar2"
+                            class="btn primary hidden">
+                            Regresar
+                        </button>
+
+                        <button type="submit" class="btn primary">
+                            Enviar
+                        </button>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </main>
+
+    <!-- Contenedor de mensajes flotantes (toasts) -->
+    <div id="toast-container" aria-live="polite" aria-atomic="true"></div>
+
+    <!-- Lógica del formulario (validaciones, pasos, dinámicos) -->
+    <script src="./js/CrearCuenta.js"></script>
+</body>
+
+</html>

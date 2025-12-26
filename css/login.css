@@ -1,0 +1,136 @@
+/* Contenedor principal del login: padding y ancho */
+main {
+    padding: 5%;
+    width: 30%;
+}
+
+
+/* Logo de la página de login: tamaño y apariencia */
+.logo-img {
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    background: snow;
+    display: block;
+    margin: 0 auto 18px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+.logo-img img {
+    width: 100%;
+    height: 100%;
+}
+
+/* Estilos generales del formulario */
+form{
+    background-color: #fffbfc;
+    border-radius: 15px;
+    width: auto;
+    height: auto;
+}
+
+/* main.login: ajustes específicos para la página de login */
+main.login {
+  width: 30%;
+  max-width: 95%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: transparent;
+  border-radius: 12px;
+}
+
+/* Logo flotante dentro de main.login */
+main.login .logo-img {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background: snow;
+  margin: 0 auto;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 18px 50px rgba(0,0,0,0.45);
+  position: relative;
+  z-index: 10;
+  margin-bottom: -70px;
+}
+main.login .logo-img img {
+  width: 80%;
+  height: 80%;
+  object-fit: contain;
+}
+
+/* main.login form: se encarga de dar estilo al formulario */
+main.login form {
+  width: 100%;
+  background: rgba(255,255,255,0.98);
+  padding: 90px 28px 28px;
+  border-radius: 12px;
+  box-shadow: 0 18px 40px rgba(0,0,0,0.25);
+}
+
+/* Fieldset y espaciado dentro del formulario */
+main.login fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Títulos y etiquetas en el login */
+main.login legend {
+  text-align: center;
+  font-weight: 700;
+  font-size: 1.15rem;
+  margin-bottom: 6px;
+}
+main.login label {
+  font-size: 0.9rem;
+  color: #333;
+}
+
+/* Inputs y selects del login */
+main.login input[type="text"],
+main.login input[type="password"],
+main.login input[type="date"],
+main.login select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 0.95rem;
+}
+
+/* Botón enviar: estilo y comportamiento */
+main.login button[type="submit"] {
+  width: 100%;
+  padding: 10px 12px;
+  background: #2a8ae6;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.18s ease, transform 0.08s ease;
+}
+main.login button[type="submit"]:hover { background: #1f75d1; }
+
+/* Enlaces dentro del login */
+main.login a {
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  margin-top: 6px;
+  color: #2a8ae6;
+  text-decoration: none;
+}
+
+/* Responsivo para móviles */
+@media (max-width: 420px) {
+  main.login .logo-img { width: 120px; height: 120px; margin-bottom: -60px; }
+  main.login form { padding: 72px 18px 18px; }
+}

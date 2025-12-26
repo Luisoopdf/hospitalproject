@@ -1,0 +1,488 @@
+/* LOGO FIJO SUPERIOR IZQUIERDO */
+.site-logo {
+  position: fixed;
+  top: 18px;
+  left: 18px;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: snow;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 26px 70px rgba(0,0,0,0.5);
+  z-index: 1200;
+}
+.site-logo img {
+  width: 76%;
+  height: 76%;
+  object-fit: contain;
+}
+
+/*CONTENEDOR PRINCIPAL */
+/* Contenedor del formulario */
+main.register {
+  width: 90%;
+  max-width: 50%;
+  padding: 10px 6%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 48px auto 20px;
+}
+
+/* Tarjeta blanca del formulario */
+main.register form {
+  width: 100%;
+  padding: 32px 28px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 22px 60px rgba(0,0,0,0.28);
+}
+
+/* ESTRUCTURA DEL FIELDSET*/
+/* Grid principal del formulario */
+main.register fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+/* Título "Datos personales" */
+main.register fieldset legend {
+  text-align: center;
+  font-weight: 700;
+  font-size: 1.25rem;
+  margin-bottom: 6px;
+}
+
+/* Fila que agrupa varios campos en línea */
+main.register .row {
+  display: flex;
+  gap: 12px;
+}
+
+/* Cada columna dentro de la fila */
+main.register .row .field {
+  flex: 1 1 0;
+}
+
+/* Primer campo un poco más ancho */
+main.register .row .field:nth-child(1) {
+  flex: 1.2;
+}
+
+/* Contenedor de cada campo (label + input) */
+main.register .field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* LABELS E INPUTS GENERALES*/
+/* Estilo básico de labels */
+main.register label,
+main.register label.subtitle {
+  margin: 0 0 6px 0;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+/* Estilo base de inputs y selects del formulario principal */
+main.register input[type="text"],
+main.register input[type="password"],
+main.register input[type="date"],
+main.register select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 1rem;
+  box-sizing: border-box;
+  transition: box-shadow .12s ease, border-color .12s ease;
+}
+
+/* Efecto al enfocar inputs/selects */
+main.register input:focus,
+main.register select:focus {
+  outline: none;
+  border-color: #2a8ae6;
+  box-shadow: 0 6px 18px rgba(42,138,230,0.12);
+}
+
+/* ESTADO DE ERROR EN CAMPOS*/
+/* Apariencia de un campo inválido */
+.invalid {
+  border-color: #ef4444 !important;
+  box-shadow: 0 8px 30px rgba(239,68,68,0.08) !important;
+  background: #fff6f6;
+  position: relative;
+}
+
+/* Apariencia cuando un campo inválido tiene foco */
+.invalid:focus {
+  box-shadow: 0 12px 36px rgba(239,68,68,0.12);
+  outline: none;
+}
+
+/* Icono de advertencia dentro del input inválido */
+.invalid::after {
+  content: '⚠';
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  font-size: 14px;
+  color: #ef4444;
+}
+
+/* CAMPOS A PANTALLA COMPLETA */
+/* Estos bloques ocupan todo el ancho del grid */
+main.register #telefonos,
+main.register .rol,
+main.register .full {
+  grid-column: 1 / -1;
+}
+
+/* BOTONES GENERALES */
+/* Estilo base para todos los botones */
+.btn {
+  font-family: inherit;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 14px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: background-color .15s ease, box-shadow .15s ease, transform .05s ease;
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06);
+  min-height: 38px;
+}
+
+/* Pequeño movimiento al hacer clic */
+.btn:active {
+  transform: translateY(1px);
+}
+
+/* Botón principal (azul) */
+.btn.primary {
+  background: #2a8ae6;
+  color: #fff;
+}
+
+/* Hover para botón principal */
+.btn.primary:hover {
+  filter: brightness(0.97);
+  box-shadow: 0 8px 24px rgba(42,138,230,0.12);
+}
+
+/* Botón secundario (gris) */
+.btn.secondary {
+  background: #f1f5f9;
+  color: #0f172a;
+  border: 1px solid #d1d5db;
+}
+
+/* Tamaño de botones pequeños */
+.btn.small {
+  padding: 6px 10px;
+  min-height: 34px;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+}
+
+/* Botones de icono */
+.btn-icon {
+  padding: 6px 10px;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  display: inline-grid;
+  place-items: center;
+  background: #fff5f6;
+  color: #7f1d1d;
+  border: 1px solid #f5c6cb;
+  font-size: 16px;
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.04);
+}
+
+/* Telefonos*/
+/* Contenedor de teléfonos: inputs a la izquierda, botón + a la derecha */
+.phone-wrap {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+/* Columna de inputs de teléfono */
+.phone-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+/* Fila de un solo teléfono (input + botón eliminar) */
+.telefono-input {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+/* El input ocupa todo el espacio y el botón se queda al lado */
+.telefono-input input {
+  flex: 1;
+}
+
+/* seleccion de rol */
+/* Contenedor de "Tú eres..." */
+main.register .rol {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  margin-top: 6px;
+  margin-bottom: 10px;
+}
+
+/* Título pequeño del rol */
+main.register .rol h2 {
+  margin: 0 6px 0 0;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+/* Opciones de radio para el rol */
+main.register .rol label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+/* CONTENEDOR DE BOTONES (ACTIONS) */
+/* Contenedor de acciones (Siguiente, Enviar, Regresar) */
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin: 4px 0;
+}
+
+/* Botón principal dentro de actions un poco más grande */
+.actions .btn.primary {
+  min-width: 160px;
+  padding: 10px 20px;
+  border-radius: 10px;
+}
+
+/* TOASTS (NOTIFICACIONES)*/
+/* Contenedor de todos los toasts */
+#toast-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 320px;
+  z-index: 1600;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Tarjeta base del toast */
+.toast {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  box-shadow: 0 8px 30px rgba(15,23,42,0.08);
+  opacity: 0;
+  transform: translateY(-8px);
+  transition: opacity .25s ease, transform .25s ease;
+  font-weight: 600;
+}
+
+/* Estado visible del toast */
+.toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Toast de error (rojo) */
+.toast.error {
+  background: #fff0f0;
+  color: #7f1d1d;
+  border: 1px solid #f5c6cb;
+}
+
+/* Toast informativo (azul) */
+.toast.info {
+  background: #e8f3ff;
+  color: #0b4f8a;
+  border: 1px solid rgba(42,138,230,0.18);
+}
+
+/* Texto principal del toast */
+.toast .toast-msg {
+  flex: 1;
+  font-size: 0.95rem;
+}
+
+/* Botón para cerrar el toast */
+.toast .toast-close {
+  background: transparent;
+  border: none;
+  font-size: 14px;
+  cursor: pointer;
+  color: inherit;
+  padding: 4px;
+  line-height: 1;
+  opacity: .9;
+}
+
+/* Hover en el botón de cerrar */
+.toast .toast-close:hover {
+  opacity: 1;
+}
+
+/* ENLACE DE AYUDA PARA CURP*/
+/* Contenedor del enlace de ayuda de CURP */
+main.register .curp-help {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 6px;
+}
+
+/* Estilo del enlace de ayuda */
+main.register .curp-help a {
+  font-size: 0.88rem;
+  color: #2a8ae6;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* Subrayado al pasar el mouse */
+main.register .curp-help a:hover {
+  text-decoration: underline;
+}
+
+/*    UTILIDADES GENERALES */
+/* Oculta elementos por completo */
+.hidden {
+  display: none !important;
+}
+
+/* SECCIONES INTERNAS (MED / RECEP / EXTRA) */
+/* Tarjetas internas: información médica, recepción y extra */
+#medInfo,
+#recepInfo,
+#extraInfo {
+  margin-top: 12px;
+  padding: 24px;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.98);
+  border: 1px solid rgba(42,138,230,0.06);
+  box-shadow: 0 22px 60px rgba(0,0,0,0.08);
+}
+
+/* Títulos dentro de cada sección interna */
+#medInfo h2,
+#recepInfo h2,
+#extraInfo h2 {
+  margin: 0 0 8px 0;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+/* Labels dentro de las secciones internas */
+#medInfo label,
+#extraInfo label,
+#recepInfo label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+
+/* Inputs y selects dentro de estas secciones */
+#medInfo input,
+#medInfo select,
+#extraInfo input,
+#extraInfo select,
+#recepInfo input,
+#recepInfo select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #cfd8e3;
+  border-radius: 10px;
+  font-size: 1rem;
+  box-sizing: border-box;
+  transition: box-shadow .12s ease, border-color .12s ease;
+}
+
+/* Efecto de foco para inputs/selects en secciones internas */
+#medInfo input:focus,
+#medInfo select:focus,
+#extraInfo input:focus,
+#extraInfo select:focus,
+#recepInfo input:focus,
+#recepInfo select:focus {
+  outline: none;
+  border-color: #2a8ae6;
+  box-shadow: 0 6px 18px rgba(42,138,230,0.12);
+}
+
+/* Contenedor de botones dentro de cada sección */
+#medInfo .actions,
+#extraInfo .actions,
+#recepInfo .actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+/* LISTAS DINÁMICAS (ALERGIAS, ANTECEDENTES, ENFERMEDADES)
+/* Bloque completo de cada lista (ocupa todo el ancho) */
+.list-block {
+  width: 100%;
+}
+
+/* Cada fila (input + botones) dentro de una lista */
+.list-input {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-sizing: border-box;
+  margin: 10px;
+}
+
+/* Espacio inferior entre filas de la lista */
+.list-block > .list-input {
+  margin-bottom: 8px;
+}
+
+/* Input dentro de la fila de lista */
+.list-input input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #fff;
+  border-radius: 8px;
+}
+
+/* Botón + dentro de las listas dinámicas */
+.list-input .btn.small {
+  width: 40px;
+  height: 40px;
+  padding: 6px 10px;
+}

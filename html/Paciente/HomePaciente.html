@@ -1,126 +1,305 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="/img/logo.ico">
-    <link rel="stylesheet" href="/css/template.css">
-    <link rel="stylesheet" href="/css/Paciente/HomePaciente.css">
-    <title>Home</title>
+  <meta charset="UTF-8" />  <!-- Permite acentos y caracteres especiales-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />  <!-- Controla el tamaño en distintos dispositivos-->
+  <title>Hospital San Mungo | Paciente</title>   <!-- Texto que aparece en la pestaña del navegador-->
+  <link rel="icon" href="/img/logo.ico" />  <!-- favicon (pequeño icono en la pestaña), con la ruta del archivo  -->
+
+  <!-- Referencias a CSS y JS -->
+  <link rel="stylesheet" href="/css/Paciente/HomePaciente.css" /> <!-- Importa el archivo CSS que contiene estilos -->  
+  <script src="/js/Paciente/HomePaciente.js" defer></script>  <!-- JS (defer para que cargue después del HTML) -->
 </head>
 
 <body>
-    <div class="master">
-        <div class="logo-wrapper" aria-hidden="true">
-            <img src="/img/logo.png" alt="Logo Hospital San Mungo" class="page-logo">
+  <!-- BARRA DE NAVEGACIÓN -->
+  <header class="topbar">   <!-- clase CSS (múltiples elementos pueden compartirla) -->
+
+    <div class="topbar-left">
+      <img class="topbar-logo" src="/img/logo.png" alt="Hospital San Mungo" />  <!-- Logo del hospital -->
+      <span class="brand-title">Hospital San Mungo</span> <!-- Nombre del hospital -->  
+    </div>
+  
+    <div class="topbar-right">
+      <!-- Parte derecha de la barra, específicamente la etiqueta que muestra que es la vista Paciente -->
+      <span class="pill pill-role" title="Vista exclusiva para Pacientes">  <!-- Texto que aparece al pasar el mouse -->
+        <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+          <path d="M12 12a4 4 0 1 0-4-4 4 4 0 0 0 4 4z" fill="currentColor" opacity=".25"/>
+          <path d="M4 20a8 8 0 0 1 16 0" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none"/>
+        </svg>
+        Paciente
+      </span>
+      <!-- Botón de Cerrar Sesión -->
+      <button id="btnLogout" class="btn-link" type="button" title="Cerrar sesión"> <!--Id usado por JS-->
+        <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+          <path d="M10 7V5a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-6a2 2 0 0 1-2-2v-2" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+          <path d="M3 12h10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+          <path d="M9 8l4 4-4 4" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Cerrar Sesión
+      </button>
+    </div>
+  </header>
+
+  <!-- PÁGINA -->   
+  <main class="page">
+    <!-- Se divide la página en dos áreas: aside.sidebar y section.content  -->
+
+    <!-- LEFT SIDEBAR -->   <!-- Barra lateral izquierda. Mostrar perfil, acciones rápidas y contacto.-->
+    <aside class="sidebar">
+
+      <!-- Sección del perfil -->
+      <section class="card profile-card">
+        <div class="profile-cover"></div> <!-- Imagen de portada encima de foto de perfil (decorativa) -->
+
+        <div class="profile-body">  
+
+          <!-- Avatar con imagen -->
+          <div class="avatar" aria-label="Paciente">
+            <img class="avatar-img" src="/img/iconoPaciente.png" alt="Ícono Paciente" />
+          </div>
+
+          <!-- Nombre de perfil y ID de usuario-->
+          <div class="profile-name" id="p_nombre">Angel Sánchez Rangel</div>
+          <div class="profile-id">ID: <span id="p_id">849302</span></div> <!-- ID permite que JS actualice el texto -->
+
+          <!-- Acciones rápidas: Agendar cita, historial citas y cancelar cita -->
+          <div class="quick-actions">
+            <!-- Botón agendar cita-->
+            <a class="btn btn-primary" href="/html/AgendacionCitas.html">
+              <span class="btn-ic" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="16" height="16">
+                  <path d="M7 3v3M17 3v3M4 8h16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                  <path d="M6 11h4M6 15h4M14 12h4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                  <path d="M5 6h14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2z" fill="currentColor" opacity=".12"/>
+                </svg>
+              </span>
+              Agendar Cita
+            </a>
+            <!-- Botón historial de citas-->
+            <button class="btn btn-outline" type="button" id="btnHistorial">
+              <span class="btn-ic" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="16" height="16">
+                  <path d="M12 8v5l3 2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none"/>
+                  <path d="M4 12a8 8 0 1 0 2.3-5.7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none"/>
+                  <path d="M4 4v4h4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none"/>
+                </svg>
+              </span>
+              Historial de Citas
+            </button>
+            <!-- Botón cancelar cita-->
+            <button class="btn btn-danger-ghost" type="button" id="btnCancelarRapido">
+              <span class="btn-ic" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="16" height="16">
+                  <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                </svg>
+              </span>
+              Cancelar Cita
+            </button>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- CONTACTO RÁPIDO -->
+      <section class="card contact-card">
+        <div class="card-head contact-head">
+          <h3>Contacto Rápido</h3>
+          <!-- Botón para editar el contacto rápido-->
+          <button class="icon-btn" type="button" id="btnEditarContacto" title="Editar contacto">
+            <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+              <path d="M4 20h4l10.5-10.5a2 2 0 0 0 0-2.8L17.3 5.5a2 2 0 0 0-2.8 0L4 16v4z" fill="currentColor" opacity=".2"/>
+              <path d="M14 6l4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+              <path d="M4 20h4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+            </svg>
+          </button>
+        </div>
+        <!-- Campo email -->
+        <div class="contact-edit">
+          <label>Email</label>
+          <input id="cr_email" type="email" value="consejodesabiosprogramadores@gmail.com" disabled />
+        </div>
+        <!-- Campo teléfono -->
+        <div class="contact-edit">
+          <label>Teléfono</label>
+          <input id="cr_tel" type="text" value="555-0123" disabled />
+        </div>
+        <!-- Botones ocultos hasta editar ---------------------------------------------------------------------------------------------------------------------------------->                                                   
+        <div class="form-actions" id="accionesContacto" hidden>
+          <button class="btn btn-outline" type="button" id="btnCancelarContacto">Cancelar</button>
+          <button class="btn btn-primary" type="button" id="btnGuardarContacto">Guardar</button>
+        </div>
+      </section>
+
+      <section class="btnEliminarPerfil">
+        <!-- Botón eliminar perfil -->
+        <button class="btn btn-danger-cancelation" type="button" id="btnEliminarPerfil">
+          <div class="title-ic" aria-hidden="true">⚠</div>
+          Eliminar perfil
+        </button>
+        </section>
+
+    </aside>
+
+    <!-- CONTENIDO PRINCIPAL -->  <!-- Aquí van los datos personales, historial médico y citas programadas -->
+    <section class="content">
+
+      <!-- DATOS PERSONALES -->
+      <article class="card">
+        <div class="card-head">
+          <div class="card-title">
+            <span class="title-ic ic-blue" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="18" height="18">
+                <path d="M7 6a5 5 0 0 1 10 0v2h2v12H5V8h2z" fill="currentColor" opacity=".16"/>
+                <path d="M9 8V6a3 3 0 1 1 6 0v2" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+              </svg>
+            </span>
+            <h2>Datos Personales</h2>
+          </div>
+          <!-- Botón para editar datos personales -->
+          <button class="btn-link small" id="btnEditarDatos" type="button">
+            Editar
+          </button>
+        </div>
+        <!-- Formulario de datos personales -->
+        <form class="grid-form" id="formDatos">
+          <!-- Campo Nombre completo -->
+          <div class="field">
+            <label>Nombre completo</label>
+            <input id="dp_nombre" type="text" value="Angel Sánchez Rangel" disabled />
+          </div>
+          <!-- Campo CURP -->
+          <div class="field">
+            <label>CURP</label>
+            <input id="dp_curp" type="text" value="CURP123456HM" disabled />
+          </div>
+          <!-- Campo Fecha de nacimiento -->
+          <div class="field">
+            <label>Fecha de nacimiento</label>
+            <div class="input-with-ic">
+              <input id="dp_nacimiento" type="date" value="1810-05-15" disabled />
+            </div>
+          </div>
+          <!-- Campo Género -->
+          <div class="field">
+            <label>Género</label>
+            <select id="dp_genero" disabled>
+              <option>Masculino</option>
+              <option>Femenino</option>
+              <option>Otro</option>
+            </select>
+          </div>
+          <!-- Botones ocultos hasta editar ------------------------------------------------------------------------------------------------------------------>
+          <div class="form-actions" id="accionesDatos" hidden>
+            <button class="btn btn-outline" type="button" id="btnCancelarEdicionDatos">Cancelar</button>
+            <button class="btn btn-primary" type="submit">Guardar</button>
+          </div>
+        </form>
+      </article>
+
+      <!-- HISTORIAL MÉDICO -->
+      <article class="card">
+        <div class="card-head">
+          <div class="card-title">
+            <span class="title-ic ic-red" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="18" height="18">
+                <path d="M6 5h12a2 2 0 0 1 2 2v13H4V7a2 2 0 0 1 2-2z" fill="currentColor" opacity=".14"/>
+                <path d="M9 12h6M12 9v6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+              </svg>
+            </span>
+            <h2>Historial Médico</h2>
+          </div>
+          <!-- Botón para editar historial médico -->
+          <button class="btn-link small" id="btnEditarMed" type="button">
+            Editar
+          </button>
+        </div>
+        <!-- Formulario de historial médico -->
+        <div class="stats-row">
+          <!-- Campo Tipo de sangre -->
+          <div class="stat">
+            <div class="stat-label">Tipo de sangre</div>
+            <select id="hm_sangre" disabled>
+              <option>O+</option><option>O-</option>
+              <option>A+</option><option>A-</option>
+              <option>B+</option><option>B-</option>
+              <option>AB+</option><option>AB-</option>
+            </select>
+          </div>
+          <!-- Campo Peso -->
+          <div class="stat">
+            <div class="stat-label">Peso (kg)</div>
+            <input id="hm_peso" type="number" step="0.1" min="0" value="65" disabled />
+          </div>
+          <!-- Campo Estatura -->
+          <div class="stat">
+            <div class="stat-label">Estatura (m)</div>
+            <input id="hm_estatura" type="number" step="0.01" min="0" value="1.75" disabled />
+          </div>
         </div>
 
-        <h1>BIENVENIDO AL <span class="brand">HOSPITAL SAN MUNGO</span></h1>
-        <main>
-            <h3 class="page-title">Elige una opción</h3>
+        <!-- Alergias -->
+        <div class="field mt">
+          <label>Alergias</label>
+          <textarea id="hm_alergias" rows="3" disabled>Penicilina</textarea>
+        </div>
 
-            <div class="content">
-                <a class="card" href="AgendacionCitas.html" role="link" tabindex="0" aria-label="Agendar Cita">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                        stroke="#2a8ae6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                        class="icon icon-tabler icons-tabler-outline icon-tabler-calendar-plus">
-                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                        <path d="M12.5 21h-6.5a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v5" />
-                        <path d="M16 3v4" />
-                        <path d="M8 3v4" />
-                        <path d="M4 11h16" />
-                        <path d="M16 19h6" />
-                        <path d="M19 16v6" />
-                    </svg>
+        <!-- Enfermedades -->
+        <div class="field mt">
+          <label>Enfermedades</label>
+          <textarea id="hm_enfermedades" rows="3" disabled>Hipertensión</textarea>
+        </div>
 
-                    <h2>Agendar Cita</h2>
-                </a>
+        <!-- Campo Antecedentes médicos -->
+        <div class="field mt">
+          <label>Antecedentes médicos</label>
+          <textarea id="hm_antecedentes" rows="3" disabled>Madre con diabetes tipo 2, Padre con problemas cardiacos.</textarea>
+        </div>
 
-                <a class="card" href="AgendacionCitas.html" role="link" tabindex="0" aria-label="Citas Programadas">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                        stroke="#2a8ae6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                        class="icon icon-tabler icons-tabler-outline icon-tabler-calendar-week">
-                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                        <path d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12z" />
-                        <path d="M16 3v4" />
-                        <path d="M8 3v4" />
-                        <path d="M4 11h16" />
-                        <path d="M7 14h.013" />
-                        <path d="M10.01 14h.005" />
-                        <path d="M13.01 14h.005" />
-                        <path d="M16.015 14h.005" />
-                        <path d="M13.015 17h.005" />
-                        <path d="M7.01 17h.005" />
-                        <path d="M10.01 17h.005" />
-                    </svg>
+        <!-- Botones ocultos hasta editar ----------------------------------------------------------------------------------------------------------------->
+        <div class="form-actions" id="accionesMed" hidden>
+          <button class="btn btn-outline" type="button" id="btnCancelarEdicionMed">Cancelar</button>
+          <button class="btn btn-primary" type="button" id="btnGuardarMed">Guardar</button>
+        </div>
+      </article>
 
-                    <h2>Citas Programadas</h2>
-                </a>
-
-                <a class="card" href="HistorialCitas.html" role="link" tabindex="0" aria-label="Historial de Citas">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                        stroke="#2a8ae6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                        class="icon icon-tabler icons-tabler-outline icon-tabler-calendar-clock">
-                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                        <path d="M10.5 21h-4.5a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v3" />
-                        <path d="M16 3v4" />
-                        <path d="M8 3v4" />
-                        <path d="M4 11h10" />
-                        <path d="M18 18m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0" />
-                        <path d="M18 16.5v1.5l.5 .5" />
-                    </svg>
-
-                    <h2>Historial de Citas</h2>
-                </a>
-
-                <a class="card" href="Cuenta.html" role="link" tabindex="0" aria-label="Cuenta">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#2a8ae6"
-                        class="icon icon-tabler icons-tabler-filled icon-tabler-user">
-                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                        <path d="M12 2a5 5 0 1 1 -5 5l.005 -.217a5 5 0 0 1 4.995 -4.783z" />
-                        <path d="M14 14a5 5 0 0 1 5 5v1a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-1a5 5 0 0 1 5 -5h4z" />
-                    </svg>
-
-                    <h2>Cuenta</h2>
-                </a>
-            </div>
-
-        </main>
-    </div>
-    <script>
-        // Small fix: ensure .card anchors navigate even if CSS overlays block pointer events
-        document.addEventListener('DOMContentLoaded', function () {
-            document.querySelectorAll('.card').forEach(function (el) {
-                // allow pointer events in case CSS set pointer-events: none
-                el.style.pointerEvents = el.style.pointerEvents || 'auto';
-
-                if (el.tagName.toLowerCase() === 'a' && el.getAttribute('href')) {
-                    // make keyboard Enter/Space work and ensure navigation
-                    el.addEventListener('keydown', function (e) {
-                        if (e.key === 'Enter' || e.key === ' ') {
-                            e.preventDefault();
-                            location.assign(this.getAttribute('href'));
-                        }
-                    });
-                    // ensure click always navigates (prevent double fallback)
-                    el.addEventListener('click', function (e) {
-                        e.preventDefault();
-                        location.assign(this.getAttribute('href'));
-                    });
-                } else {
-                    var href = el.getAttribute('data-href');
-                    if (href) {
-                        el.style.cursor = 'pointer';
-                        el.addEventListener('click', function () { location.assign(href); });
-                        el.addEventListener('keydown', function (e) {
-                            if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); location.assign(href); }
-                        });
-                    }
-                }
-            });
-        });
-    </script>
+      <!-- CITAS PROGRAMADAS -->
+      <article class="card">
+        <div class="card-head">
+          <div class="card-title">
+            <span class="title-ic ic-green" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="18" height="18">
+                <path d="M6 5h12a2 2 0 0 1 2 2v13H4V7a2 2 0 0 1 2-2z" fill="currentColor" opacity=".14"/>
+                <path d="M7 3v3M17 3v3M4 8h16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                <path d="M7.5 12h3.5M7.5 15h5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+              </svg>
+            </span>
+            <h2>Citas Programadas</h2>
+          </div>
+        </div>
+        
+        <!-- Tabla de citas programadas -->
+        <div class="table-wrap">
+          <table class="table"> <!-- clase CSS para tablas -->
+            
+            <thead> <!-- Encabezado de la tabla -->
+              <tr>
+                <th>Fecha cita</th>
+                <th>Horario</th>
+                <th>Agendado el</th>
+                <th>Estatus</th>
+                <th>Pago</th>
+              </tr>
+            </thead>
+            
+            <tbody id="tablaCitas"> <!-- Cuerpo de la tabla donde JS insertará las filas -->
+              <!-- Ejemplos. Luis y Bruno se encargan de llenar la tabla, estos son datos aleatorios. En el JS se llena -->
+            </tbody>
+          </table>
+        </div>
+      </article>
+    </section>
+  </main>
 </body>
-
 </html>

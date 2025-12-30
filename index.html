@@ -16,18 +16,37 @@
         <div class="logo-img">
             <img src="./img/logo.png" alt="logo">
         </div>
-        <form>
+        <form id="loginForm">
             <fieldset>
                 <legend>Inicia Sesión</legend>
+
                 <label>Correo: </label>
-                <input type="text" placeholder="Ingresa Tu Correo" required>
+                <input id="correo" type="text" placeholder="Ingresa Tu Correo" required>
+
                 <label>Contraseña: </label>
-                <input type="password" placeholder="Ingresa Tu Contraseña" required>
+                <input id="password" type="password" placeholder="Ingresa Tu Contraseña" required>
+
+                <label style="display: flex; align-items: center; font-size: 0.9em;">
+                    <input type="checkbox" id="showPassword" style="margin-right: 5px;">
+                    Mostrar contraseña
+                </label>
+
                 <button type="submit">Ingresar</button>
-                 <a href="./html/CrearCuenta.html">Crear Cuenta</a>
+                <a href="./html/CrearCuenta.html">Crear Cuenta</a>
             </fieldset>
         </form>
     </main>
 </body>
 
 </html>
+
+<script>
+    const showPassword = document.getElementById('showPassword');
+    const passwordInput = document.getElementById('password');
+
+    showPassword.addEventListener('change', () => {
+        passwordInput.type = showPassword.checked ? 'text' : 'password';
+    });
+</script>
+
+<script src="http://localhost:3000/js/login-paciente.js"></script>

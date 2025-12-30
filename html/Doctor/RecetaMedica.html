@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Receta Médica</title>
+
+  <link rel="icon" href="/img/logo.ico" />
+  <link rel="stylesheet" href="/css/Doctor/RecetaMedica.css" />
+  <script src="/js/Doctor/RecetaMedica.js" defer></script>
+</head>
+
+<body>
+  <!-- TOP BAR (idéntica a tu código) -->
+  <header class="topbar">
+    <div class="topbar-left">
+      <img class="topbar-logo" src="/img/logo.png" alt="Hospital San Mungo" />
+      <span class="brand-title">Hospital San Mungo</span>
+    </div>
+
+    <div class="topbar-right">
+      <span class="pill pill-role" title="Vista exclusiva para doctor">
+        <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+          <path d="M12 12a4 4 0 1 0-4-4 4 4 0 0 0 4 4z" fill="currentColor" opacity=".25"/>
+          <path d="M4 20a8 8 0 0 1 16 0" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none"/>
+        </svg>
+        Doctor
+      </span>
+
+      <button id="btnLogout" class="btn-link" type="button" title="Cerrar sesión">
+        <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+          <path d="M10 7V5a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-6a2 2 0 0 1-2-2v-2" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+          <path d="M3 12h10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+          <path d="M9 8l4 4-4 4" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Cerrar Sesión
+      </button>
+    </div>
+  </header>
+
+  <main class="page">
+    <div class="wrap">
+      <div class="page-head">
+        <div>
+          <h1>Formulario de Receta Médica</h1>
+          <p>Complete los detalles de la consulta y prescripción.</p>
+        </div>
+      </div>
+
+      <!-- Card: Datos de la receta (NO editable) -->
+      <section class="card">
+        <div class="card-head">
+          <div class="card-title">
+            <span class="ic" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="18" height="18">
+                <path d="M7 3h7l3 3v15a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z" fill="currentColor" opacity=".16"/>
+                <path d="M9 11h6M9 15h6M9 7h3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" fill="none"/>
+              </svg>
+            </span>
+            Datos de la Receta
+          </div>
+        </div>
+
+        <div class="card-body grid-4">
+          <div class="field">
+            <label>Folio Cita</label>
+            <input type="text" value="4092" readonly />
+          </div>
+
+          <div class="field">
+            <label>Folio Receta</label>
+            <input type="text" value="REC-2023-891" readonly />
+          </div>
+
+          <div class="field">
+            <label>Consultorio</label>
+            <input type="text" value="204 - Torre B" readonly />
+          </div>
+
+          <div class="field">
+            <label>Fecha de Emisión</label>
+            <div class="input-ic">
+              <input type="text" value="10/24/2023" readonly />
+              <span class="ic-right" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="18" height="18">
+                  <path d="M7 3v3M17 3v3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                  <path d="M4 9h16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                  <path d="M6 6h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2z" fill="none" stroke="currentColor" stroke-width="1.6"/>
+                </svg>
+              </span>
+            </div>
+          </div>
+
+          <div class="field">
+            <label>Doctor</label>
+            <input type="text" value="Dr. Alejandro Vega" readonly />
+          </div>
+
+          <div class="field">
+            <label>Cédula Profesional</label>
+            <input type="text" value="8923410" readonly />
+          </div>
+
+          <div class="field">
+            <label>Paciente</label>
+            <input type="text" value="Carlos Rodríguez" readonly />
+          </div>
+
+          <div class="field">
+            <label>Edad</label>
+            <input type="text" value="34 años" readonly />
+          </div>
+        </div>
+      </section>
+
+      <!-- Card: Asistencia -->
+      <section class="card">
+        <div class="card-head">
+          <div>
+            <div class="card-title">Asistencia del Paciente</div>
+            <div class="card-sub">Confirme si el paciente se presentó a la cita programada.</div>
+          </div>
+
+          <div class="seg" role="tablist" aria-label="Asistencia del paciente">
+            <button id="btnAsistio" class="seg-btn is-active" type="button">Sí, asistió</button>
+            <button id="btnAusente" class="seg-btn" type="button">No, ausente</button>
+          </div>
+        </div>
+      </section>
+
+      <div class="grid-main">
+        <!-- Left column -->
+        <section class="stack">
+          <!-- Diagnóstico -->
+          <section class="card">
+            <div class="card-head">
+              <div class="card-title">
+                <span class="ic" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="18" height="18">
+                    <path d="M12 2a7 7 0 0 0-7 7v1a7 7 0 0 0 14 0V9a7 7 0 0 0-7-7z" fill="currentColor" opacity=".16"/>
+                    <path d="M8.5 21h7" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+                    <path d="M9 12h6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+                  </svg>
+                </span>
+                Diagnóstico
+              </div>
+            </div>
+            <div class="card-body">
+              <textarea id="txtDiagnostico" class="textarea" placeholder="Escriba el diagnóstico principal del paciente (ej. Infección respiratoria aguda)..."></textarea>
+            </div>
+          </section>
+
+          <!-- Tratamiento -->
+          <section class="card">
+            <div class="card-head head-split">
+              <div class="card-title">
+                <span class="ic" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="18" height="18">
+                    <path d="M9 3h6a2 2 0 0 1 2 2v2H7V5a2 2 0 0 1 2-2z" fill="currentColor" opacity=".16"/>
+                    <path d="M7 7h10v14a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2V7z" fill="none" stroke="currentColor" stroke-width="1.6"/>
+                    <path d="M9 11h6M9 15h6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                  </svg>
+                </span>
+                Tratamiento Farmacológico
+              </div>
+
+              <button id="btnAddMed" class="btn btn-soft" type="button">
+                <span class="plus" aria-hidden="true">+</span>
+                Añadir Medicamento
+              </button>
+            </div>
+
+            <div class="card-body">
+              <div class="med-table">
+                <div class="med-head">
+                  <div>Nombre medicamento</div>
+                  <div>Dosis (ml)</div>
+                  <div>Frecuencia (h)</div>
+                  <div>Duración (días)</div>
+                  <div>Cant.(mg)</div>
+                  <div></div>
+                </div>
+
+                <div id="medList" class="med-list">
+                  <!-- JS inserta filas -->
+                </div>
+              </div>
+
+              <div class="divider"></div>
+
+              <div class="subsection-title">
+                <span class="info" aria-hidden="true">i</span>
+                Recomendaciones e Indicaciones
+              </div>
+              <textarea id="txtRecomendaciones" class="textarea" placeholder="Ej. Reposo relativo por 3 días. Abundante hidratación..."></textarea>
+            </div>
+          </section>
+        </section>
+
+        <!-- Right column -->
+        <section class="card services">
+          <div class="card-head head-split">
+            <div class="card-title">Servicios / Proc.</div>
+            <button id="btnAddServ" class="icon-circle" type="button" title="Agregar servicio">+</button>
+          </div>
+
+          <div class="card-body">
+            <div id="servList" class="serv-list">
+              <!-- JS inserta tarjetas -->
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- Footer buttons -->
+      <section class="footer-actions">
+        <button id="btnCancelar" class="btn btn-danger" type="button">Cancelar</button>
+        <button id="btnFinalizar" class="btn btn-primary" type="button">
+          Finalizar y guardar receta
+        </button>
+      </section>
+
+      <div id="toast" class="toast" hidden></div>
+    </div>
+  </main>
+</body>
+</html>

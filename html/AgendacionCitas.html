@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Agendar Cita | Hospital San Mungo</title>
+    <link rel="icon" type="image/png" href="/img/logo.ico">
+    <link rel="stylesheet" href="/css/AgendacionCitas.css">
+    <link rel="stylesheet" href="/css/template.css">
+</head>
+
+<body>
+    <a href="/html/Paciente/HomePaciente.html" class="logo-container">
+        <img src="/img/logo.png" alt="Logo" class="logo-img">
+    </a>
+
+
+    <div class="container">
+        <h1>Agendar Cita Médica</h1>
+
+        <!-- PANEL 1: ESPECIALIDAD -->
+        <div class="card panel" id="panel-especialidad">
+            <h2>Paso 1: Selecciona la especialidad</h2>
+
+            <div class="especialidades-grid">
+
+                <!-- Cardiología -->
+                <button type="button" class="especialidad-card" data-clave="cardiologia" data-nombre="Cardiología"
+                    data-precio="800">
+                    <span class="icon-wrapper">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
+                            stroke="#2a8ae6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path
+                                d="M19.5 13.572l-7.5 7.428l-2.896 -2.868m-6.117 -8.104a5 5 0 0 1 9.013 -3.022a5 5 0 1 1 7.5 6.572" />
+                            <path d="M3 13h2l2 3l2 -6l1 3h3" />
+                        </svg>
+                    </span>
+                    <span class="especialidad-nombre">Cardiología</span>
+                </button>
+
+                <!-- Dermatología -->
+                <button type="button" class="especialidad-card" data-clave="dermatologia" data-nombre="Dermatología"
+                    data-precio="600">
+                    <span class="icon-wrapper">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
+                            stroke="#2a8ae6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path d="M12 5.5m-2.5 0a2.5 2.5 0 1 0 5 0a2.5 2.5 0 1 0 -5 0" />
+                            <path
+                                d="M12 21.368l5.095 -5.096a3.088 3.088 0 1 0 -4.367 -4.367l-.728 .727l-.728 -.727a3.088 3.088 0 1 0 -4.367 4.367l5.095 5.096z" />
+                        </svg>
+                    </span>
+                    <span class="especialidad-nombre">Dermatología</span>
+                </button>
+
+                <!-- Ginecología -->
+                <button type="button" class="especialidad-card" data-clave="ginecologia" data-nombre="Ginecología"
+                    data-precio="700">
+                    <span class="icon-wrapper">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
+                            stroke="#2a8ae6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path d="M11 11m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0" />
+                            <path d="M19 3l-5 5" />
+                            <path d="M15 3h4v4" />
+                            <path d="M11 16v6" />
+                            <path d="M8 19h6" />
+                        </svg>
+                    </span>
+                    <span class="especialidad-nombre">Ginecología</span>
+                </button>
+
+                <!-- Medicina General -->
+                <button type="button" class="especialidad-card" data-clave="medicina_general"
+                    data-nombre="Medicina General" data-precio="500">
+                    <span class="icon-wrapper">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
+                            stroke="#2a8ae6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path d="M6 4h-1a2 2 0 0 0 -2 2v3.5h0a5.5 5.5 0 0 0 11 0v-3.5a2 2 0 0 0 -2 -2h-1" />
+                            <path d="M8 15a6 6 0 1 0 12 0v-3" />
+                            <path d="M11 3v2" />
+                            <path d="M6 3v2" />
+                            <path d="M20 10m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
+                        </svg>
+                    </span>
+                    <span class="especialidad-nombre">Medicina General</span>
+                </button>
+
+                <!-- Nefrología -->
+                <button type="button" class="especialidad-card" data-clave="nefrologia" data-nombre="Nefrología"
+                    data-precio="750">
+                    <span class="icon-wrapper">
+                        <img src="/img/rinon.png" alt="Nefrología" class="icon-img">
+                    </span>
+                    <span class="especialidad-nombre">Nefrología</span>
+                </button>
+
+                <!-- Nutriología -->
+                <button type="button" class="especialidad-card" data-clave="nutriologia" data-nombre="Nutriología"
+                    data-precio="500">
+                    <span class="icon-wrapper">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
+                            stroke="#2a8ae6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path
+                                d="M4 11.319c0 3.102 .444 5.319 2.222 7.978c1.351 1.797 3.156 2.247 5.08 .988c.426 -.268 .97 -.268 1.397 0c1.923 1.26 3.728 .809 5.079 -.988c1.778 -2.66 2.222 -4.876 2.222 -7.977c0 -2.661 -1.99 -5.32 -4.444 -5.32c-1.267 0 -2.41 .693 -3.22 1.44a.5 .5 0 0 1 -.672 0c-.809 -.746 -1.953 -1.44 -3.22 -1.44c-2.454 0 -4.444 2.66 -4.444 5.319" />
+                            <path d="M7 12c0 -1.47 .454 -2.34 1.5 -3" />
+                            <path d="M12 7c0 -1.2 .867 -4 3 -4" />
+                        </svg>
+                    </span>
+                    <span class="especialidad-nombre">Nutriología</span>
+                </button>
+
+                <!-- Oftalmología -->
+                <button type="button" class="especialidad-card" data-clave="oftalmologia" data-nombre="Oftalmología"
+                    data-precio="650">
+                    <span class="icon-wrapper">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
+                            stroke="#2a8ae6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path d="M8 18h-.011" />
+                            <path d="M12 18h-.011" />
+                            <path d="M16 18h-.011" />
+                            <path d="M4 3h16" />
+                            <path d="M5 3v17a1 1 0 0 0 1 1h12a1 1 0 0 0 1 -1v-17" />
+                            <path d="M14 7h-4" />
+                            <path d="M9 15h1" />
+                            <path d="M14 15h1" />
+                            <path d="M12 11v-4" />
+                        </svg>
+                    </span>
+                    <span class="especialidad-nombre">Oftalmología</span>
+                </button>
+
+                <!-- Oncología -->
+                <button type="button" class="especialidad-card" data-clave="oncologia" data-nombre="Oncología"
+                    data-precio="900">
+                    <span class="icon-wrapper">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
+                            stroke="#2a8ae6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path d="M12 12m-5 0a5 5 0 1 0 10 0a5 5 0 1 0 -10 0" />
+                            <path d="M12 7v-4" />
+                            <path d="M11 3h2" />
+                            <path d="M15.536 8.464l2.828 -2.828" />
+                            <path d="M17.657 4.929l1.414 1.414" />
+                            <path d="M17 12h4" />
+                            <path d="M21 11v2" />
+                            <path d="M15.535 15.536l2.829 2.828" />
+                            <path d="M19.071 17.657l-1.414 1.414" />
+                            <path d="M12 17v4" />
+                            <path d="M13 21h-2" />
+                            <path d="M8.465 15.536l-2.829 2.828" />
+                            <path d="M6.343 19.071l-1.413 -1.414" />
+                            <path d="M7 12h-4" />
+                            <path d="M3 13v-2" />
+                            <path d="M8.464 8.464l-2.828 -2.828" />
+                            <path d="M4.929 6.343l1.414 -1.413" />
+                        </svg>
+                    </span>
+                    <span class="especialidad-nombre">Oncología</span>
+                </button>
+
+                <!-- Ortopedia -->
+                <button type="button" class="especialidad-card" data-clave="ortopedia" data-nombre="Ortopedia"
+                    data-precio="700">
+                    <span class="icon-wrapper">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
+                            stroke="#2a8ae6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path
+                                d="M13 3v6l4.798 5.142a4 4 0 0 1 -5.441 5.86l-6.736 -6.41a2 2 0 0 1 -.621 -1.451v-9.141h8z" />
+                            <path d="M7.895 15.768c.708 -.721 1.105 -1.677 1.105 -2.768a4 4 0 0 0 -4 -4" />
+                        </svg>
+                    </span>
+                    <span class="especialidad-nombre">Ortopedia</span>
+                </button>
+
+                <!-- Pediatría -->
+                <button type="button" class="especialidad-card" data-clave="pediatria" data-nombre="Pediatría"
+                    data-precio="550">
+                    <span class="icon-wrapper">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
+                            stroke="#2a8ae6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path d="M8 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
+                            <path d="M18 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
+                            <path d="M2 5h2.5l1.632 4.897a6 6 0 0 0 5.693 4.103h2.675a5.5 5.5 0 0 0 0 -11h-.5v6" />
+                            <path d="M6 9h14" />
+                            <path d="M9 17l1 -3" />
+                            <path d="M16 14l1 3" />
+                        </svg>
+                    </span>
+                    <span class="especialidad-nombre">Pediatría</span>
+                </button>
+
+            </div>
+
+            <div class="panel-actions">
+                <button class="btn btn-primary" id="btn-especialidad">Continuar</button>
+            </div>
+        </div>
+
+        <!-- PANEL 2: DOCTOR (4 doctores por especialidad) -->
+        <div class="card panel hidden" id="panel-doctor">
+            <h2>Paso 2: Selecciona el doctor</h2>
+
+            <select id="select-doctor">
+                <option value="">Seleccione un doctor</option>
+            </select>
+
+            <div class="panel-actions">
+                <button class="btn btn-secondary" id="back-to-especialidad">Atrás</button>
+                <button class="btn btn-primary" id="btn-doctor">Continuar</button>
+            </div>
+        </div>
+
+        <!-- PANEL 3: FECHA -->
+        <div class="card panel hidden" id="panel-fecha">
+            <h2>Paso 3: Selecciona la fecha</h2>
+
+            <label for="fecha-cita">Fecha disponible</label>
+            <input type="date" id="fecha-cita">
+
+            <div class="panel-actions">
+                <button class="btn btn-secondary" id="back-to-doctor">Atrás</button>
+                <button class="btn btn-primary" id="btn-fecha">Continuar</button>
+            </div>
+        </div>
+
+        <!-- PANEL 4: HORARIOS -->
+        <div class="card panel hidden" id="panel-horario">
+            <h2>Paso 4: Selecciona horario</h2>
+
+            <div class="tabla-horarios">
+                <label class="slot disponible-slot">
+                    <input type="radio" name="horario" data-rango="08:00 - 08:30"> 08:00 - 08:30
+                </label>
+                <label class="slot disponible-slot">
+                    <input type="radio" name="horario" data-rango="08:30 - 09:00"> 08:30 - 09:00
+                </label>
+                <label class="slot ocupado-slot">
+                    <input type="radio" disabled> 09:00 - 09:30 (Ocupado)
+                </label>
+                <label class="slot disponible-slot">
+                    <input type="radio" name="horario" data-rango="09:30 - 10:00"> 09:30 - 10:00
+                </label>
+                <label class="slot disponible-slot">
+                    <input type="radio" name="horario" data-rango="10:00 - 10:30"> 10:00 - 10:30
+                </label>
+                <label class="slot ocupado-slot">
+                    <input type="radio" disabled> 10:30 - 11:00 (Ocupado)
+                </label>
+            </div>
+
+            <div class="panel-actions">
+                <button class="btn btn-secondary" id="back-to-fecha">Atrás</button>
+                <button class="btn btn-primary" id="btn-horario">Continuar</button>
+            </div>
+        </div>
+
+        <!-- PANEL 5: COMPROBANTE -->
+        <div class="card panel hidden" id="panel-resumen">
+            <h2>Paso 5: Comprobante y pago</h2>
+
+            <div class="comprobante-grid">
+                <div><strong>Folio de cita:</strong> <span id="res-folio"></span></div>
+                <div><strong>Especialidad:</strong> <span id="res-especialidad"></span></div>
+                <div><strong>Doctor:</strong> <span id="res-doctor"></span></div>
+                <div><strong>Consultorio:</strong> <span id="res-consultorio"></span></div>
+                <div><strong>Fecha:</strong> <span id="res-fecha"></span></div>
+                <div><strong>Horario:</strong> <span id="res-horario"></span></div>
+                <div>
+                    <label>Monto a pagar</label>
+                    <input type="text" id="res-monto" readonly>
+                </div>
+                <div>
+                    <label>Línea de pago</label>
+                    <input type="text" id="res-linea" value="LC-2025-000001-ABC123" readonly>
+                </div>
+            </div>
+
+            <div class="politica-cancelacion">
+                <h3>Política de Cancelación</h3>
+                <p>Para cancelar una cita, se deberá realizar con la siguiente anticipación:</p>
+                <ul>
+                    <li><strong>48 horas de anticipación:</strong> devolución del 100% del pago.</li>
+                    <li><strong>24 horas de anticipación:</strong> devolución del 50% del pago.</li>
+                    <li><strong>Menos de 24 horas:</strong> no aplica reembolso (0% del pago).</li>
+                </ul>
+            </div>
+
+            <div class="panel-actions">
+                <button class="btn btn-secondary" id="back-to-horario">Atrás</button>
+                <button class="btn btn-primary" id="btn-confirmar">Confirmar cita</button>
+            </div>
+        </div>
+
+    </div>
+
+
+    <script src="/js/AgendacionCitas.js"></script>
+</body>
+
+</html>

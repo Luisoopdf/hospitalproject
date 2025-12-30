@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hospital San Mungo | Recepcionista</title>
+
+  <link rel="icon" href="/img/logo.ico" />
+  <link rel="stylesheet" href="/css/Recepcionista/HomeRecepcionista.css" />
+  <script src="/js/Recepcionista/HomeRecepcionista.js" defer></script>
+</head>
+
+<body>
+  <!-- TOP BAR -->
+  <header class="topbar">
+    <div class="topbar-left">
+      <img class="topbar-logo" src="/img/logo.png" alt="Hospital San Mungo" />
+      <span class="brand-title">Hospital San Mungo</span>
+    </div>
+
+    <div class="topbar-right">
+      <span class="pill pill-role" title="Vista exclusiva para recepcionista">
+        <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+          <path d="M12 12a4 4 0 1 0-4-4 4 4 0 0 0 4 4z" fill="currentColor" opacity=".25"/>
+          <path d="M4 20a8 8 0 0 1 16 0" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none"/>
+        </svg>
+        Recepcionista
+      </span>
+
+      <button id="btnLogout" class="btn-link" type="button" title="Cerrar sesión">
+        <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+          <path d="M10 7V5a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-6a2 2 0 0 1-2-2v-2" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+          <path d="M3 12h10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+          <path d="M9 8l4 4-4 4" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Cerrar Sesión
+      </button>
+    </div>
+  </header>
+
+  <main class="layout">
+    <!-- LEFT SIDEBAR -->
+    <aside class="sidebar">
+      <section class="profile-card">
+        <div class="profile-cover"></div>
+
+        <div class="profile-body">
+          <div class="avatar">
+            <!-- Si tienes una imagen específica, cámbiala aquí -->
+            <img src="/img/iconoRecepcionista.png" alt="Recepcionista" onerror="this.style.display='none'" />
+          </div>
+
+          <div class="profile-name" id="r_nombre">Recepcionista</div>
+          <div class="profile-id">ID: <span id="r_id">REC-001</span></div>
+
+          <!-- Botones nuevos -->
+          <button id="btnGestionCitas" class="btn btn-soft" type="button">
+            <span class="btn-ic" aria-hidden="true">📅</span>
+            Gestionar citas
+          </button>
+
+          <button id="btnGestionUsuarios" class="btn btn-soft" type="button">
+            <span class="btn-ic" aria-hidden="true">👥</span>
+            Gestionar Usuarios
+          </button>
+        </div>
+      </section>
+
+      <!-- Contacto rápido (se mantiene igual) -->
+      <section class="contact-card">
+        <div class="card-head">
+          <div class="card-title">Contacto Rápido</div>
+          <button id="btnEditarContacto" class="icon-btn" type="button" title="Editar contacto">✎</button>
+        </div>
+
+        <div class="card-body">
+          <div class="field">
+            <label>Email</label>
+            <input id="cr_email" type="email" value="recepcion@email.com" disabled />
+          </div>
+
+          <div class="field">
+            <label>Teléfono</label>
+            <input id="cr_tel" type="text" value="555-0000" disabled />
+          </div>
+
+          <div class="form-actions" id="accionesContacto" hidden>
+            <button id="btnCancelarContacto" class="btn btn-ghost" type="button">Cancelar</button>
+            <button id="btnGuardarContacto" class="btn btn-primary" type="button">Guardar</button>
+          </div>
+        </div>
+      </section>
+    </aside>
+
+    <!-- CONTENT -->
+    <section class="content">
+      <!-- DATOS PERSONALES (solo lectura) -->
+      <section class="card">
+        <div class="card-head">
+          <div class="card-title">
+            <span class="badge-ic" aria-hidden="true">🧾</span>
+            Datos Personales
+          </div>
+        </div>
+
+        <div class="card-body grid-2">
+          <div class="field">
+            <label>Nombre Completo</label>
+            <input id="dp_nombre" type="text" value="Recepcionista" readonly />
+          </div>
+
+          <div class="field">
+            <label>CURP</label>
+            <input id="dp_curp" type="text" value="XXXX000000HDFXXX00" readonly />
+          </div>
+
+          <div class="field">
+            <label>Fecha de Nacimiento</label>
+            <input id="dp_nacimiento" type="text" value="1990-01-01" readonly />
+          </div>
+
+          <div class="field">
+            <label>Género</label>
+            <input id="dp_genero" type="text" value="—" readonly />
+          </div>
+
+          <div class="field">
+            <label>Número de Empleado</label>
+            <input id="dp_numEmpleado" type="text" value="EMP-0000" readonly />
+          </div>
+
+          <!-- ✅ Se elimina Cédula Profesional -->
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <div id="toast" class="toast" hidden></div>
+</body>
+</html>

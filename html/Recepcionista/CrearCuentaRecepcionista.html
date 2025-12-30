@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="icon" type="image/png" href="/img/logo.ico" />
+  <link rel="stylesheet" href="/css/template.css" />
+  <link rel="stylesheet" href="/css/Recepcionista/CrearCuentaRecepcionista.css" />
+
+  <title>Crear Cuenta (Recepción)</title>
+</head>
+
+<body>
+  <div class="site-logo" aria-hidden="true">
+    <img src="/img/logo.png" alt="logo" />
+  </div>
+
+  <main class="register">
+    <form>
+      <fieldset>
+        <legend>Datos Personales</legend>
+
+        <!-- ===================== PASO 1 ===================== -->
+        <div id="step1">
+          <div class="field">
+            <label class="subtitle" for="curp">CURP</label>
+            <input id="curp" type="text" required placeholder="Tu CURP" />
+            <div class="curp-help">
+              <a href="https://www.gob.mx/curp" target="_blank" rel="noopener noreferrer">
+                Consulta aquí tu CURP
+              </a>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="field">
+              <label class="subtitle" for="nombres">Nombre(s)</label>
+              <input id="nombres" type="text" required placeholder="Tu Nombre" />
+            </div>
+
+            <div class="field">
+              <label class="subtitle" for="apPaterno">Apellido Paterno</label>
+              <input id="apPaterno" type="text" required placeholder="Tu Apellido Paterno" />
+            </div>
+
+            <div class="field">
+              <label class="subtitle" for="apMaterno">Apellido Materno</label>
+              <input id="apMaterno" type="text" placeholder="Tu Apellido Materno" />
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="field">
+              <label class="subtitle" for="fechaNac">Fecha de Nacimiento</label>
+              <input id="fechaNac" type="date" required />
+            </div>
+
+            <div class="field">
+              <label class="subtitle" for="genero">Género</label>
+              <select id="genero" required>
+                <option value="" disabled selected>Seleciona una opción</option>
+                <option value="Masculino">Masculino</option>
+                <option value="Femenino">Femenino</option>
+                <option value="Otro">Otro</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Teléfono único -->
+          <div class="field">
+            <label class="subtitle" for="telefono">Teléfono de contacto</label>
+            <input id="telefono" name="telefono" type="text" placeholder="Número de teléfono" required />
+          </div>
+
+          <!-- Tipo de usuario -->
+          <div class="userType full">
+            <label class="subtitle">Tipo de usuario</label>
+            <input type="hidden" id="tipoUsuario" name="tipoUsuario" />
+
+            <div class="dropdown" id="tipoUsuarioDropdown">
+              <button type="button" class="btn secondary dropdown-btn" id="tipoUsuarioBtn" aria-expanded="false">
+                Tipo de usuario <span class="chev" aria-hidden="true">▾</span>
+              </button>
+
+              <div class="dropdown-menu hidden" id="tipoUsuarioMenu" role="menu" aria-label="Tipo de usuario">
+                <button type="button" class="dropdown-item" data-value="Paciente">Paciente</button>
+                <button type="button" class="dropdown-item" data-value="Doctor">Doctor</button>
+                <button type="button" class="dropdown-item" data-value="Recepcionista">Recepcionista</button>
+                <button type="button" class="dropdown-item" data-value="Farmaceutico">Farmaceutico</button>
+              </div>
+
+              <div class="dropdown-hint" id="tipoUsuarioHint">Selecciona un tipo de usuario.</div>
+            </div>
+          </div>
+
+          <div class="actions">
+            <button type="button" id="siguienteBtn" class="btn primary">Siguiente</button>
+          </div>
+        </div>
+
+        <!-- ===================== PASO 2: PACIENTE ===================== -->
+        <div id="pacienteInfo" class="hidden">
+          <h2>Información del Paciente</h2>
+
+          <label for="peso">Peso (obligatorio)</label>
+          <input id="peso" name="peso" type="text" placeholder="Ingresa tu peso" />
+
+          <label for="estatura">Estatura (obligatorio)</label>
+          <input id="estatura" name="estatura" type="text" placeholder="Ingresa tu estatura" />
+
+          <label for="tipoSangre">Tipo de Sangre (obligatorio)</label>
+          <select id="tipoSangre" name="tipoSangre">
+            <option value="" disabled selected>Seleciona una opción</option>
+            <option value="A+">A+</option><option value="A-">A-</option>
+            <option value="B+">B+</option><option value="B-">B-</option>
+            <option value="AB+">AB+</option><option value="AB-">AB-</option>
+            <option value="O+">O+</option><option value="O-">O-</option>
+          </select>
+
+          <div class="list-block" style="margin-top: 12px;">
+            <label for="alergias">Alergias</label>
+            <input id="alergias" name="alergias" type="text" placeholder="Ej. Penicilina, Polen" />
+          </div>
+
+          <div class="list-block">
+            <label for="enfermedades">Enfermedades</label>
+            <input id="enfermedades" name="enfermedades" type="text" placeholder="Ej. Diabetes, Hipertensión" />
+          </div>
+
+          <div class="list-block">
+            <label for="antecedentes">Antecedentes médicos</label>
+            <input id="antecedentes" name="antecedentes" type="text" placeholder="Ej. Cirugía 2020, Asma en la infancia" />
+          </div>
+
+          <div class="actions" style="margin-top: 12px;">
+            <button type="button" id="btnRegresar" class="btn secondary">Regresar</button>
+            <button type="submit" class="btn primary">Crear cuenta</button>
+          </div>
+        </div>
+
+        <!-- ===================== PASO 2: DOCTOR ===================== -->
+        <div id="doctorInfo" class="hidden">
+          <h2>Información del Doctor</h2>
+
+          <label for="especialidad">Especialidad</label>
+          <select id="especialidad" name="especialidad">
+            <option value="" disabled selected>Seleciona una opción</option>
+            <option value="Cardiología">Cardiología</option>
+            <option value="Dermatología">Dermatología</option>
+            <option value="Ginecología">Ginecología</option>
+            <option value="Medicina General">Medicina General</option>
+            <option value="Nefrología">Nefrología</option>
+            <option value="Nutriología">Nutriología</option>
+            <option value="Oftalmología">Oftalmología</option>
+            <option value="Oncología">Oncología</option>
+            <option value="Ortopedia">Ortopedia</option>
+            <option value="Pediatría">Pediatría</option>
+          </select>
+
+          <label for="consultorio">Consultorio</label>
+          <input id="consultorio" name="consultorio" type="text" placeholder="Ej. Piso 2 - Consultorio 12" />
+
+          <label for="cedulaProfesional">Cédula profesional</label>
+          <input id="cedulaProfesional" name="cedulaProfesional" type="text" placeholder="Ingresa la cédula profesional" />
+
+          <div class="actions" style="margin-top: 12px;">
+            <button type="button" id="btnRegresarDoc" class="btn secondary">Regresar</button>
+            <button type="submit" class="btn primary">Crear cuenta</button>
+          </div>
+        </div>
+
+        <!-- ===================== PASO 2: RECEPCIONISTA / FARMACÉUTICO ===================== -->
+        <div id="simpleInfo" class="hidden">
+          <h2>Confirmación</h2>
+          <p class="simple-note">Para este tipo de usuario solo se registran los datos personales.</p>
+
+          <div class="actions" style="margin-top: 12px;">
+            <button type="button" id="btnRegresarSimple" class="btn secondary">Regresar</button>
+            <button type="submit" class="btn primary">Crear cuenta</button>
+          </div>
+        </div>
+
+      </fieldset>
+    </form>
+  </main>
+
+  <div id="toast-container" aria-live="polite" aria-atomic="true"></div>
+  <script src="/js/Recepcionista/CrearCuentaRecepcionista.js"></script>
+</body>
+</html>

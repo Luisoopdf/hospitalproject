@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hospital San Mungo | Doctor</title>
+
+  <link rel="icon" href="/img/logo.ico" />
+  <link rel="stylesheet" href="/css/Doctor/HomeDoctor.css" />
+  <script src="/js/Doctor/HomeDoctor.js" defer></script>
+</head>
+
+<body>
+  <!-- TOP BAR (idéntico a HomePaciente, solo cambia texto a Doctor) -->
+  <header class="topbar">
+    <div class="topbar-left">
+      <img class="topbar-logo" src="/img/logo.png" alt="Hospital San Mungo" />
+      <span class="brand-title">Hospital San Mungo</span>
+
+    </div>
+
+    <div class="topbar-right">
+      <span class="pill pill-role" title="Vista exclusiva para doctor">
+        <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+          <path d="M12 12a4 4 0 1 0-4-4 4 4 0 0 0 4 4z" fill="currentColor" opacity=".25"/>
+          <path d="M4 20a8 8 0 0 1 16 0" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none"/>
+        </svg>
+        Doctor
+      </span>
+
+      <button id="btnLogout" class="btn-link" type="button" title="Cerrar sesión">
+        <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+          <path d="M10 7V5a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-6a2 2 0 0 1-2-2v-2" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+          <path d="M3 12h10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+          <path d="M9 8l4 4-4 4" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Cerrar Sesión
+      </button>
+    </div>
+  </header>
+
+  <main class="layout">
+    <!-- LEFT SIDEBAR -->
+    <aside class="sidebar">
+      <section class="profile-card">
+        <div class="profile-cover"></div>
+
+        <div class="profile-body">
+          <div class="avatar">
+            <img src="/img/iconoDoctor.jpg" alt="Doctor" onerror="this.style.display='none'" />
+            <div class="avatar-fallback" aria-hidden="true">👨‍⚕️</div>
+          </div>
+
+          <div class="profile-name" id="d_nombre">Dr. Roberto Martínez</div>
+          <div class="profile-id">ID: <span id="d_id">DOC-001</span></div>
+
+          <!-- Solo se mantiene Historial Citas -->
+          <button id="btnHistorial" class="btn btn-soft" type="button">
+            <span class="btn-ic" aria-hidden="true">🕘</span>
+            Historial Citas
+          </button>
+        </div>
+      </section>
+
+      <!-- Contacto rápido (se mantiene igual) -->
+      <section class="contact-card">
+        <div class="card-head">
+          <div class="card-title">Contacto Rápido</div>
+          <button id="btnEditarContacto" class="icon-btn" type="button" title="Editar contacto">✎</button>
+        </div>
+
+        <div class="card-body">
+          <div class="field">
+            <label>Email</label>
+            <input id="cr_email" type="email" value="doctor@email.com" disabled />
+          </div>
+
+          <div class="field">
+            <label>Teléfono</label>
+            <input id="cr_tel" type="text" value="555-0000" disabled />
+          </div>
+
+          <div class="form-actions" id="accionesContacto" hidden>
+            <button id="btnCancelarContacto" class="btn btn-ghost" type="button">Cancelar</button>
+            <button id="btnGuardarContacto" class="btn btn-primary" type="button">Guardar</button>
+          </div>
+        </div>
+      </section>
+    </aside>
+
+    <!-- CONTENT -->
+    <section class="content">
+      <!-- DATOS PERSONALES (solo lectura, sin editar) -->
+      <section class="card">
+        <div class="card-head">
+          <div class="card-title">
+            <span class="badge-ic" aria-hidden="true">🧾</span>
+            Datos Personales
+          </div>
+        </div>
+
+        <div class="card-body grid-2">
+          <div class="field">
+            <label>Nombre Completo</label>
+            <input id="dp_nombre" type="text" value="Dr. Roberto Martínez" readonly />
+          </div>
+
+          <div class="field">
+            <label>CURP</label>
+            <input id="dp_curp" type="text" value="MARR850101HDFXXX01" readonly />
+          </div>
+
+          <div class="field">
+            <label>Fecha de Nacimiento</label>
+            <input id="dp_nacimiento" type="text" value="1985-01-01" readonly />
+          </div>
+
+          <div class="field">
+            <label>Género</label>
+            <input id="dp_genero" type="text" value="Masculino" readonly />
+          </div>
+
+          <div class="field">
+            <label>Número de Empleado</label>
+            <input id="dp_numEmpleado" type="text" value="EMP-1029" readonly />
+          </div>
+
+          <div class="field">
+            <label>Cédula Profesional</label>
+            <input id="dp_cedula" type="text" value="CED-9876543" readonly />
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <!-- CITAS PROGRAMADAS (ancho amplio dentro del content) -->
+    <section class="card card-wide">
+      <div class="card-head">
+        <div class="card-title">
+          <span class="badge-ic" aria-hidden="true">📅</span>
+          Citas Programadas
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="table-wrap">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Cita</th>
+                <th>Horario</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody id="tablaCitasDoctor">
+              <!-- JS inserta filas -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- MODAL: Datos del paciente -->
+  <div id="modalPaciente" class="modal" hidden>
+    <div class="modal-backdrop" data-close="1"></div>
+
+    <div class="modal-card" role="dialog" aria-modal="true">
+      <div class="modal-head">
+        <div class="modal-title">Datos del Paciente</div>
+        <button id="btnCerrarModalX" class="icon-btn" type="button" title="Cerrar">✕</button>
+      </div>
+
+      <!-- ============================================================-->
+      <div class="modal-body">
+        <!-- SECCIÓN: DATOS PERSONALES (texto) -->
+        <div class="modal-section">
+          <div class="section-head">
+            <div class="section-title">Datos personales</div>
+          </div>
+        
+          <div class="text-kv">
+            <div class="kv">
+              <div class="kv-k">Id Historial</div>
+              <div class="kv-v" id="mp_idHistorial">—</div>
+            </div>
+          
+            <div class="kv">
+              <div class="kv-k">Usuario</div>
+              <div class="kv-v" id="mp_usuario">—</div>
+            </div>
+          
+            <div class="kv">
+              <div class="kv-k">Nombre</div>
+              <div class="kv-v" id="mp_nombre">—</div>
+            </div>
+          
+            <div class="kv">
+              <div class="kv-k">Fecha de nacimiento</div>
+              <div class="kv-v" id="mp_nacimiento">—</div>
+            </div>
+          </div>
+        </div>
+      
+        <!-- SECCIÓN: HISTORIAL MÉDICO (recuadros no editables) -->
+        <div class="modal-section">
+          <div class="section-head">
+            <div class="section-title">Historial Médico</div>
+          </div>
+        
+          <div class="box-grid">
+            <div class="info-box">
+              <div class="info-label">Alergias</div>
+              <div class="info-value" id="mp_alergias">—</div>
+            </div>
+          
+            <div class="info-box">
+              <div class="info-label">Enfermedades</div>
+              <div class="info-value" id="mp_enfermedades">—</div>
+            </div>
+          
+            <div class="info-box info-wide">
+              <div class="info-label">Antecedentes médicos</div>
+              <div class="info-value" id="mp_antecedentes">—</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============================================================-->
+
+      <div class="modal-foot">
+        <button id="btnCerrarModal" class="btn btn-primary" type="button">Cerrar</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast" hidden></div>
+</body>
+</html>
